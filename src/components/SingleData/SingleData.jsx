@@ -2,8 +2,9 @@ import React from "react";
 
 const SingleData = (props) => {
   //   console.log(props.singleData);
-  const { name, features, description, image, published_in } = props.singleData;
-  console.log(props.singleData.features);
+  const {id, name, features, description, image, published_in } = props.singleData;
+//   console.log(props.singleData.features);
+
   return (
     <div>
       <div className="card w-full bg-base-100 shadow-xl">
@@ -40,7 +41,7 @@ const SingleData = (props) => {
             <p>{published_in}</p>
           </div>
           <div className="flex">
-            <span className=" cursor-pointer bg-red-400 rounded-lg p-2"><svg
+            <label onClick={()=> props.setUniqueId(id)} htmlFor="my-modal-5" className=" cursor-pointer bg-red-400 rounded-lg p-2"><svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -53,7 +54,7 @@ const SingleData = (props) => {
                 strokeLinejoin="round"
                 d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
               />
-            </svg></span>
+            </svg></label>
           </div>
          </div>
         </div>
@@ -61,5 +62,4 @@ const SingleData = (props) => {
     </div>
   );
 };
-
 export default SingleData;
