@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
+import Button from "../Buttoon/Button";
 import SingleData from "../SingleData/SingleData";
 
 const Cart = () => {
   const [data, SetData] = useState([]);
+  const [showAll, setShowALl] = useState(false)
+  const handleShowAll = () =>{
+    setShowALl(true)
+  }
   useEffect(() => {
     const loadData = async () => {
       const res = await fetch(
@@ -18,7 +23,7 @@ const Cart = () => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:px-10 my-8 mx-2 lg:mx-4">
         {
-            data.map((singleData)=><SingleData 
+            data.slice(0,showAll ? 12 : 6).map((singleData)=><SingleData 
             key = {singleData.id}
             singleData = {singleData}
             ></SingleData>)
@@ -34,6 +39,9 @@ const Cart = () => {
         // })
         }
       </div>
+      <p onClick={handleShowAll}>
+      <Button>See more</Button>
+      </p>
     </>
   );
 };
